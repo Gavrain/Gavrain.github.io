@@ -1,0 +1,168 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5"><title>Vue实现的算数型计算器 | TheNest</title><meta name="description" content="Vue实现的算数型计算器"><meta name="author" content="Gavrain"><meta name="copyright" content="Gavrain"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="preconnect" href="//cdn.jsdelivr.net"><link rel="preconnect" href="https://hm.baidu.com"><link rel="preconnect" href="https://fonts.googleapis.com" crossorigin><link rel="preconnect" href="//busuanzi.ibruce.info"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Vue实现的算数型计算器"><meta name="twitter:description" content="Vue实现的算数型计算器"><meta name="twitter:image" content="https://tvax3.sinaimg.cn/large/976e13ebgy1gb3bx4u0n9j21hc0h8tde.jpg"><meta property="og:type" content="article"><meta property="og:title" content="Vue实现的算数型计算器"><meta property="og:url" content="https://gavrain.github.io/uncategorized/20200220-null/"><meta property="og:site_name" content="TheNest"><meta property="og:description" content="Vue实现的算数型计算器"><meta property="og:image" content="https://tvax3.sinaimg.cn/large/976e13ebgy1gb3bx4u0n9j21hc0h8tde.jpg"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script src="https://cdn.jsdelivr.net/npm/js-cookie/dist/js.cookie.min.js"></script><script>const autoChangeMode = 'false'
+var t = Cookies.get("theme");
+if (autoChangeMode == '1'){
+const isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
+const isLightMode = window.matchMedia("(prefers-color-scheme: light)").matches
+const isNotSpecified = window.matchMedia("(prefers-color-scheme: no-preference)").matches
+const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+if (t === undefined){
+  if (isLightMode) activateLightMode()
+  else if (isDarkMode) activateDarkMode()
+  else if (isNotSpecified || hasNoSupport){
+    console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+    now = new Date();
+    hour = now.getHours();
+    isNight = hour < 6 || hour >= 18
+    isNight ? activateDarkMode() : activateLightMode()
+}
+} else if (t == 'light') activateLightMode()
+else activateDarkMode()
+
+
+} else if (autoChangeMode == '2'){
+  now = new Date();
+  hour = now.getHours();
+  isNight = hour < 6 || hour >= 18
+  if(t === undefined) isNight? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode() 
+} else {
+  if ( t == 'dark' ) activateDarkMode()
+  else if ( t == 'light') activateLightMode()
+}
+
+function activateDarkMode(){
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+    document.querySelector('meta[name="theme-color"]').setAttribute('content','#000')
+  }
+}
+function activateLightMode(){
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+  document.querySelector('meta[name="theme-color"]').setAttribute('content','#fff')
+  }
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css"><link rel="stylesheet" href="https://at.alicdn.com/t/font_1623981_8b1oowep2z4.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css"><link rel="canonical" href="https://gavrain.github.io/uncategorized/20200220-null/"><link rel="next" title="剑指offer（一）" href="https://gavrain.github.io/%E7%AE%97%E6%B3%95/20200131-offer1/"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.5/dist/instantsearch.min.css"><script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.5/dist/instantsearch.min.js" defer></script><script>var _hmt=_hmt||[];!function(){var e=document.createElement("script");e.src="https://hm.baidu.com/hm.js?949e0bde757009046faf5a68bb3068a0";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)}()</script><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web"><script>var GLOBAL_CONFIG={root:"/",algolia:{appId:"ZUB1940FTH",apiKey:"b9bbae1717399211b6989f8a5b19659b",indexName:"hexo-blog",hits:{per_page:6},languages:{input_placeholder:"搜索文章",hits_empty:"找不到您查询的内容:${query}",hits_stats:"找到 ${hits} 条结果，用时 ${time} 毫秒"}},localSearch:void 0,translate:{defaultEncoding:2,translateDelay:0,cookieDomain:"https://gavrain.github.io/",msgToTraditionalChinese:"繁",msgToSimplifiedChinese:"简"},copy:{success:"复制成功",error:"复制错误",noSupport:"浏览器不支持"},bookmark:{title:"Snackbar.bookmark.title",message_prev:"按",message_next:"键将本页加入书签"},runtime_unit:"天",runtime:!0,copyright:{languages:{author:"作者: Gavrain",link:"链接: https://gavrain.github.io/uncategorized/20200220-null/",source:"来源: TheNest",info:"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},ClickShowText:void 0,medium_zoom:!1,fancybox:!0,Snackbar:{bookmark:{title:"Snackbar.bookmark.title",message_prev:"按",message_next:"键将本页加入书签"},chs_to_cht:"你已切换为繁体",cht_to_chs:"你已切换为简体",day_to_night:"你已切换为深色模式",night_to_day:"你已切换为浅色模式",bgLight:"#49b1f5",bgDark:"#2d3035",position:"bottom-right"},baiduPush:!1,isHome:!1,isPost:!0}</script><meta name="generator" content="Hexo 4.2.0"></head><body><canvas class="fireworks"></canvas><header><div id="page-header"><span class="pull_left" id="blog_name"><a class="blog_title" id="site-name" href="/">TheNest</a></span><span class="toggle-menu pull_right close"><a class="site-page"><i class="fa fa-bars fa-fw" aria-hidden="true"></i></a></span><span class="pull_right menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> About</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> List</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> Movie</span></a></li><li><a class="site-page" href="/gallery/"><i class="fa-fw fa fa-photo"></i><span> Gallery</span></a></li><li><a class="site-page" href="/library/"><i class="fa-fw fa fa-book"></i><span> Library</span></a></li></ul></div></div></span><span class="pull_right" id="search_button"><a class="site-page social-icon search"><i class="fa fa-search fa-fw"></i><span> 搜索</span></a></span></div></header><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/img/avatar.png" onerror='onerror=null,src="/img/friend_404.gif"' alt="avatar"></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">7</div></a></div></div><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">6</div></a></div></div><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">4</div></a></div></div></div><hr><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> About</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> List</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> Movie</span></a></li><li><a class="site-page" href="/gallery/"><i class="fa-fw fa fa-photo"></i><span> Gallery</span></a></li><li><a class="site-page" href="/library/"><i class="fa-fw fa fa-book"></i><span> Library</span></a></li></ul></div></div></div><div id="mobile-sidebar-toc"><div class="toc_mobile_headline">目录</div><div class="sidebar-toc__content"></div></div></div><div id="body-wrap"><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div class="auto_open" id="sidebar"><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"></div></div></div><main id="content-outer"><div id="top-container" style="background-image:url(https://tvax3.sinaimg.cn/large/976e13ebgy1gb3bx4u0n9j21hc0h8tde.jpg)"><div id="post-info"><div id="post-title"><div class="posttitle">Vue实现的算数型计算器</div></div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 发表于 2020-02-20<span class="post-meta__separator">|</span><i class="fa fa-history fa-fw" aria-hidden="true"></i> 更新于 2020-02-20</time><div class="post-meta-wordcount"><i class="fa fa-file-word-o post-meta__icon fa-fw" aria-hidden="true"></i><span>字数总计:</span><span class="word-count">340</span><span class="post-meta__separator">|</span><i class="fa fa-clock-o post-meta__icon fa-fw" aria-hidden="true"></i><span>阅读时长: 2 分钟</span><div class="post-meta-pv-cv"><span class="post-meta__separator">|</span><span><i class="fa fa-eye post-meta__icon fa-fw" aria-hidden="true"> </i>阅读量:</span><span id="busuanzi_value_page_pv"></span></div></div></div></div></div><div class="layout layout_post" id="content-inner"><article id="post"><div class="article-container" id="post-content"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><style>#show{text-align:right}.container{width:400px}.cal{width:100%}[class^=col]{padding:0}</style><div class="container" id="example"><div class="row"><div class="clo-md-12"><div class="panel panel-info"><div class="panel-heading">算术型计算器</div><div class="panel-body" v-text="show" id="show"></div></div></div></div><div class="row" v-for="row in key"><div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" v-for="v in row"><button type="button" class="btn btn-default" :class="calstyle" @click="input">{{ v }}</button></div></div><div class="row"><div class="col-md-12"><button type="button" class="btn btn-default" :class="calstyle" @click="equal">=</button></div></div></div><script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><script src="https://cdn.bootcss.com/vue/2.6.11/vue.min.js"></script><script>function accAdd(arg1, arg2) {
+let r1 = deal(arg1)
+let r2 = deal(arg2)
+let m = Math.pow(10, Math.max(r1, r2))
+return (arg1 * m + arg2 * m) / m
+}
+function accMul(arg1, arg2) {
+let m = 0
+m += deal(arg1)
+m += deal(arg2)
+let r1 = Number(arg1.toString().replace('.', ''))
+let r2 = Number(arg2.toString().replace('.', ''))
+return (r1 * r2) / Math.pow(10, m)
+}
+function accDiv(arg1, arg2) {
+let t1 = deal(arg1)
+let t2 = deal(arg2)
+let r1 = Number(arg1.toString().replace('.', ''))
+let r2 = Number(arg2.toString().replace('.', ''))
+return (r1 / r2) * Math.pow(10, t2 - t1)
+}
+function deal(arg) {
+let t = 0
+try {
+t = arg.toString().split('.')[1].length
+} catch (e) {}
+return t
+}</script><script>let vm = new Vue({
+el: '#example',
+data: {
+calstyle: 'cal',
+show: '0',
+temp: 0,
+dotStatus: false,
+enterStatus: false,
+operator: '',
+key: [
+['7', '8', '9', '÷'],
+['4', '5', '6', '×'],
+['1', '2', '3', '-'],
+['clear', '0', '.', '+'],
+],
+},
+methods: {
+input: function(e) {
+let patern = e.target.innerText
+switch (patern) {
+case '0':
+case '1':
+case '2':
+case '3':
+case '4':
+case '5':
+case '6':
+case '7':
+case '8':
+case '9':
+case '.':
+this.inputNum(patern)
+break
+case 'clear':
+this.show = 0
+this.temp = 0
+this.dotStatus = false
+this.enterStatus = false
+this.operator = ''
+break
+case '+':
+case '-':
+case '×':
+case '÷':
+this.inputOperator(patern)
+break
+default:
+break
+}
+return
+},
+inputNum: function(patern) {
+if (this.enterStatus) {
+this.show = 0
+this.enterStatus = false
+return this.inputNum(patern)
+}
+if (patern == '.') {
+if (this.dotStatus) return
+else this.dotStatus = true
+} else if (this.show == '0') return (this.show = patern)
+this.show += patern
+},
+inputOperator: function(patern) {
+if (this.operator) {
+this.equal()
+}
+this.enterStatus = true
+this.temp = parseFloat(this.show)
+this.dotStatus = false
+this.operator = patern
+},
+equal: function() {
+switch (this.operator) {
+case '+':
+this.show = accAdd(this.temp, parseFloat(this.show))
+break
+case '-':
+this.show = this.temp - parseFloat(this.show)
+break
+case '×':
+this.show = accMul(this.temp, parseFloat(this.show))
+break
+case '÷':
+this.show = accDiv(this.temp, parseFloat(this.show))
+break
+default:
+break
+}
+this.dotStatus = false
+this.enterStatus = true
+this.temp = 0
+this.operator = ''
+},
+},
+})</script></div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Gavrain</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://gavrain.github.io/uncategorized/20200220-null/">https://gavrain.github.io/uncategorized/20200220-null/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://gavrain.github.io">TheNest</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://tvax3.sinaimg.cn/large/976e13ebgy1gb3bx4u0n9j21hc0h8tde.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script></div></div><div class="post-reward"><a class="reward-button button--primary button--animated"><i class="fa fa-qrcode"></i> 打赏<div class="reward-main"><ul class="reward-all"><li class="reward-item"><img class="lazyload post-qr-code__img" src="/img/wechat.jpg" alt="微信"><div class="post-qr-code__desc">微信</div></li><li class="reward-item"><img class="lazyload post-qr-code__img" src="/img/alipay.jpg" alt="支付宝"><div class="post-qr-code__desc">支付宝</div></li></ul></div></a></div><nav class="pagination_post" id="pagination"><div class="next-post pull-full"><a href="/%E7%AE%97%E6%B3%95/20200131-offer1/"><img class="next_cover lazyload" data-src="https://tvax3.sinaimg.cn/large/976e13ebgy1gb3bx4u0n9j21hc0h8tde.jpg" onerror='onerror=null,src="/img/404.jpg"'><div class="label">下一篇</div><div class="next_info"><span>剑指offer（一）</span></div></a></div></nav><hr><div id="post-comment"><div class="comment_headling"><i class="fa fa-comments fa-fw" aria-hidden="true"></i><span> 评论</span></div><div id="lv-container" data-id="city" data-uid="MTAyMC80ODQ1OS8yNDk1Mw=="><script>!function(e,t){var n,c=e.getElementsByTagName(t)[0];"function"!=typeof LivereTower&&((n=e.createElement(t)).src="https://cdn-city.livere.com/js/embed.dist.js",n.async=!0,c.parentNode.insertBefore(n,c))}(document,"script")</script></div></div></div></main><footer id="footer" style="background-image:url(https://tvax3.sinaimg.cn/large/976e13ebgy1gb3bx4u0n9j21hc0h8tde.jpg)" data-type="photo"><div id="footer-wrap"><div class="copyright">&copy;2020 By Gavrain</div><div class="framework-info"><span>驱动 </span><a href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly"><span>Butterfly</span></a></div><div class="footer_custom_text">它可以没用 | 我不能没有</div></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><i class="fa fa-book" id="readmode" title="阅读模式"></i><i class="fa fa-plus" id="font_plus" title="放大字体"></i><i class="fa fa-minus" id="font_minus" title="缩小字体"></i><a class="translate_chn_to_cht" id="translateLink" href="javascript:translatePage();" title="简繁转换" target="_self">简</a><i class="darkmode fa fa-moon-o" id="darkmode" title="夜间模式"></i></div><div id="rightside-config-show"><div id="rightside_config" title="设置"><i class="fa fa-cog" aria-hidden="true"></i></div><a id="to_comment" href="#post-comment" title="直达评论"><i class="scroll_to_comment fa fa-comments"></i></a><i class="fa fa-list-ul close" id="mobile-toc-button" title="目录" aria-hidden="true"></i><i class="fa fa-arrow-up" id="go-up" title="回到顶部" aria-hidden="true"></i></div></section><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/js/fireworks.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script id="canvas_nest" color="30, 151, 229" opacity="0.7" zindex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/js/canvas-nest.js"></script><script src="https://cdn.jsdelivr.net/npm/activate-power-mode/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful=!0,POWERMODE.shake=!1,document.body.addEventListener("input",POWERMODE)</script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@latest/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/lazysizes@latest/lazysizes.min.js" async></script><div class="search-dialog" id="algolia-search"><div class="search-dialog__title" id="algolia-search-title">Algolia</div><div id="algolia-input-panel"><div id="algolia-search-input"></div></div><hr><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-stats"></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div></body></html>
